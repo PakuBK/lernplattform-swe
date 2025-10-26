@@ -56,6 +56,8 @@ This guide will help you set up the Learning Platform on your local computer, ev
 
 ### Using phpMyAdmin (Easier for Beginners)
 
+The XAMPP Apache and MySQL have to be running for this.
+
 1. Open your web browser
 2. Go to:
    - **XAMPP**: `http://localhost/phpmyadmin`
@@ -94,6 +96,8 @@ EXIT;
 
 ## ⚙️ Step 4: Configure the Database Connection
 
+This is optional, you need a config.php but currently we don't need to modify these in any way.
+
 1. Open the project in your text editor (VS Code)
 2. Navigate to `includes/config.php`
 3. Update these lines if needed (default XAMPP/MAMP settings):
@@ -130,12 +134,14 @@ EXIT;
 ## 🔑 Step 6: Login
 
 Use these demo credentials:
+
 - **Username**: `student1`
 - **Password**: `student123`
 
 ## ✅ Verify Everything Works
 
 After logging in, you should see:
+
 1. ✅ Dashboard with learning materials
 2. ✅ Available quizzes
 3. ✅ Ability to click and view materials
@@ -145,14 +151,16 @@ After logging in, you should see:
 
 ### Problem: "Connection failed" error
 
-**Solution**: 
+**Solution**:
+
 - Make sure MySQL is running
 - Check username and password in `includes/config.php`
 - Verify database name is correct
 
 ### Problem: "Page not found" error
 
-**Solution**: 
+**Solution**:
+
 - Make sure you're accessing through the `public/` directory
 - Check that Apache is running
 - Try using PHP built-in server instead
@@ -160,6 +168,7 @@ After logging in, you should see:
 ### Problem: Can't access phpMyAdmin
 
 **Solution**:
+
 - For XAMPP: Make sure Apache and MySQL are both started
 - For MAMP: Check that you're using the correct port (usually 8888)
 - Try: `http://localhost:8888/MAMP/` for MAMP start page
@@ -167,6 +176,7 @@ After logging in, you should see:
 ### Problem: "Table doesn't exist" error
 
 **Solution**:
+
 - The database.sql file wasn't imported correctly
 - Go back to Step 3 and re-import the database
 - Make sure you selected the correct database before importing
@@ -174,6 +184,7 @@ After logging in, you should see:
 ### Problem: Changes don't show up
 
 **Solution**:
+
 - Clear your browser cache (Ctrl+Shift+Delete)
 - Do a "hard refresh" (Ctrl+Shift+R or Cmd+Shift+R)
 - Restart the web server
@@ -183,6 +194,7 @@ After logging in, you should see:
 ### Use Browser Developer Tools
 
 Press F12 in your browser to open developer tools:
+
 - **Console**: See JavaScript errors
 - **Network**: See what files are loading
 - **Elements**: Inspect HTML and CSS
@@ -190,6 +202,7 @@ Press F12 in your browser to open developer tools:
 ### Check PHP Errors
 
 If you see a blank page:
+
 1. Add this to the top of `public/index.php`:
    ```php
    error_reporting(E_ALL);
@@ -200,6 +213,7 @@ If you see a blank page:
 ### Use Version Control
 
 Make a habit of committing your changes:
+
 ```bash
 git add .
 git commit -m "Description of what you changed"

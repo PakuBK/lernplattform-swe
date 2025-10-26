@@ -70,8 +70,8 @@ CREATE TABLE IF NOT EXISTS quiz_attempts (
 
 -- Sample users (password is 'student123' hashed with password_hash())
 INSERT INTO users (username, password, full_name, email) VALUES
-('student1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Max Mustermann', 'max@example.com'),
-('student2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Anna Schmidt', 'anna@example.com');
+('student1', '$2y$10$mAVlBVS/MdvoZMBo63E8POb9DLqvL4gcp6cF3298TCjNKRn969wYS', 'Max Mustermann', 'max@example.com'),
+('student2', '$2y$10$mAVlBVS/MdvoZMBo63E8POb9DLqvL4gcp6cF3298TCjNKRn969wYS', 'Anna Schmidt', 'anna@example.com');
 
 -- Sample learning materials
 INSERT INTO learning_materials (title, description, content, category, difficulty_level) VALUES
