@@ -22,66 +22,8 @@ A responsive PHP-based learning platform designed for young students to access l
 
 ### Installation Steps
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/PakuBK/lernplattform-swe.git
-   cd lernplattform-swe
-   ```
+You can find the installtion steps in the **SETUP.md** file.
 
-2. **Set up the database**
-   - Create a MySQL database named `lernplattform`
-   - Import the database schema:
-     ```bash
-     mysql -u root -p lernplattform < database.sql
-     ```
-   - This will create all necessary tables and insert sample data
-
-3. **Configure database connection**
-   - Open `includes/config.php`
-   - Update the database credentials:
-     ```php
-     define('DB_HOST', 'localhost');
-     define('DB_USER', 'your_username');
-     define('DB_PASS', 'your_password');
-     define('DB_NAME', 'lernplattform');
-     ```
-
-4. **Start the server**
-   - Using PHP built-in server:
-     ```bash
-     php -S localhost:8000 -t public/
-     ```
-   - Or configure your Apache/Nginx to point to the `public/` directory
-
-5. **Access the platform**
-   - Open your browser and go to: `http://localhost:8000`
-   - Login with demo credentials:
-     - Username: `student1`
-     - Password: `student123`
-
-## 📁 Project Structure
-
-```
-lernplattform-swe/
-├── public/              # Web-accessible files
-│   ├── index.php       # Entry point
-│   ├── login.php       # Login page
-│   ├── logout.php      # Logout functionality
-│   ├── dashboard.php   # Main dashboard
-│   ├── material.php    # Learning material viewer
-│   ├── quiz.php        # Quiz page
-│   └── result.php      # Quiz results page
-├── includes/           # Backend PHP files
-│   ├── config.php     # Database configuration
-│   └── functions.php  # Helper functions
-├── assets/            # Static assets
-│   ├── css/          # Stylesheets
-│   │   └── style.css # Main stylesheet
-│   ├── js/           # JavaScript files
-│   └── images/       # Images
-├── database.sql       # Database schema and sample data
-└── README.md         # This file
-```
 
 ## 🎯 How It Works
 
