@@ -1,0 +1,25 @@
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# PHP
+*.log
+
+# Temporary files
+/tmp/
+*.tmp
+
+# Database config (uncomment if you want to keep credentials private)
+# includes/config.php
+
+# OS Files
+Thumbs.db
+desktop.ini
+
+# Backup files
+*.bak
+*.backup
