@@ -2,7 +2,10 @@
 -- This file creates the necessary tables for the learning platform
 
 -- Create database if it doesn't exist
-CREATE DATABASE IF NOT EXISTS lernplattform CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- If an older database exists, remove it so the schema below is applied cleanly.
+-- This ensures the sample data and columns (like `full_name`) match the INSERTs.
+DROP DATABASE IF EXISTS lernplattform;
+CREATE DATABASE lernplattform CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE lernplattform;
 
 -- Users table: stores student information
