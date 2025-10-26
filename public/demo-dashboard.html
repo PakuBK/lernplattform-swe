@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Learning Platform (Demo)</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="demo-dashboard.html" class="logo">🎓 Learning Platform</a>
+                <nav class="nav">
+                    <a href="demo-dashboard.html">Dashboard</a>
+                    <div class="user-info">
+                        <span>Welcome, Max Mustermann!</span>
+                        <a href="demo-login.html">Logout</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h1>Welcome to Your Learning Dashboard</h1>
+            <p style="margin-bottom: 30px;">Choose a learning material to study or take a quiz to test your knowledge!</p>
+
+            <!-- Learning Materials Section -->
+            <section>
+                <h2 style="color: #667eea; margin-bottom: 20px;">📚 Learning Materials</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3 class="card-title">Introduction to Mathematics</h3>
+                        <p class="card-description">Basic mathematical concepts for beginners</p>
+                        <div class="card-meta">
+                            <span>📂 Mathematics</span>
+                            <span class="badge badge-beginner">Beginner</span>
+                        </div>
+                        <a href="demo-material.html" class="btn btn-primary" style="margin-top: 15px;">
+                            Study Now
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">English Grammar Basics</h3>
+                        <p class="card-description">Learn the fundamentals of English grammar</p>
+                        <div class="card-meta">
+                            <span>📂 English</span>
+                            <span class="badge badge-beginner">Beginner</span>
+                        </div>
+                        <a href="demo-material.html" class="btn btn-primary" style="margin-top: 15px;">
+                            Study Now
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Introduction to Science</h3>
+                        <p class="card-description">Discover the basics of scientific inquiry</p>
+                        <div class="card-meta">
+                            <span>📂 Science</span>
+                            <span class="badge badge-beginner">Beginner</span>
+                        </div>
+                        <a href="demo-material.html" class="btn btn-primary" style="margin-top: 15px;">
+                            Study Now
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quizzes Section -->
+            <section style="margin-top: 50px;">
+                <h2 style="color: #667eea; margin-bottom: 20px;">📝 Available Quizzes</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3 class="card-title">Basic Math Quiz</h3>
+                        <p class="card-description">Test your understanding of basic mathematical operations</p>
+                        <div class="card-meta">
+                            <span>📚 Related: Introduction to Mathematics</span>
+                            <span>⏱️ 15 minutes</span>
+                        </div>
+                        <a href="demo-quiz.html" class="btn btn-success" style="margin-top: 15px;">
+                            Take Quiz
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Grammar Fundamentals Quiz</h3>
+                        <p class="card-description">Test your knowledge of basic English grammar</p>
+                        <div class="card-meta">
+                            <span>📚 Related: English Grammar Basics</span>
+                            <span>⏱️ 20 minutes</span>
+                        </div>
+                        <a href="demo-quiz.html" class="btn btn-success" style="margin-top: 15px;">
+                            Take Quiz
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Science Basics Quiz</h3>
+                        <p class="card-description">Check your understanding of scientific concepts</p>
+                        <div class="card-meta">
+                            <span>📚 Related: Introduction to Science</span>
+                            <span>⏱️ 15 minutes</span>
+                        </div>
+                        <a href="demo-quiz.html" class="btn btn-success" style="margin-top: 15px;">
+                            Take Quiz
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Quiz Attempts -->
+            <section style="margin-top: 50px;">
+                <h2 style="color: #667eea; margin-bottom: 20px;">📊 Your Recent Quiz Results</h2>
+                <div class="card">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid #e0e0e0;">
+                                <th style="text-align: left; padding: 12px;">Quiz</th>
+                                <th style="text-align: center; padding: 12px;">Score</th>
+                                <th style="text-align: center; padding: 12px;">Percentage</th>
+                                <th style="text-align: left; padding: 12px;">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 12px;">Basic Math Quiz</td>
+                                <td style="text-align: center; padding: 12px;">4 / 4</td>
+                                <td style="text-align: center; padding: 12px;"><strong>100.0%</strong></td>
+                                <td style="padding: 12px;">October 25, 2025</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 12px;">Grammar Fundamentals Quiz</td>
+                                <td style="text-align: center; padding: 12px;">3 / 4</td>
+                                <td style="text-align: center; padding: 12px;"><strong>75.0%</strong></td>
+                                <td style="padding: 12px;">October 24, 2025</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Learning Platform. Designed for young learners.</p>
+        </div>
+    </footer>
+</body>
+</html>
