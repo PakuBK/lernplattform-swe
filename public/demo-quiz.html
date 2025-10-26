@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Math Quiz - Learning Platform (Demo)</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="demo-dashboard.html" class="logo">🎓 Learning Platform</a>
+                <nav class="nav">
+                    <a href="demo-dashboard.html">Dashboard</a>
+                    <div class="user-info">
+                        <span>Welcome, Max Mustermann!</span>
+                        <a href="demo-login.html">Logout</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div style="margin-bottom: 20px;">
+                <a href="demo-dashboard.html" style="color: #667eea; text-decoration: none;">← Back to Dashboard</a>
+            </div>
+
+            <div class="card">
+                <h1 style="color: #667eea; margin-bottom: 10px;">Basic Math Quiz</h1>
+                <p style="color: #666; margin-bottom: 15px;">Test your understanding of basic mathematical operations</p>
+                <div style="color: #888;">
+                    <span>⏱️ Time Limit: 15 minutes</span>
+                    <span style="margin-left: 20px;">📝 Questions: 4</span>
+                </div>
+            </div>
+
+            <form>
+                <div class="question-card">
+                    <div class="question-number">Question 1 of 4</div>
+                    <div class="question-text">What is 5 + 3?</div>
+                    
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q1_a" name="question_1" value="A" required>
+                            <label for="q1_a">A) 6</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" id="q1_b" name="question_1" value="B">
+                            <label for="q1_b">B) 7</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" id="q1_c" name="question_1" value="C">
+                            <label for="q1_c">C) 8</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" id="q1_d" name="question_1" value="D">
+                            <label for="q1_d">D) 9</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">Question 2 of 4</div>
+                    <div class="question-text">What is 10 - 4?</div>
+                    
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q2_a" name="question_2" value="A" required>
+                            <label for="q2_a">A) 5</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" id="q2_b" name="question_2" value="B">
+                            <label for="q2_b">B) 6</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" id="q2_c" name="question_2" value="C">
+                            <label for="q2_c">C) 7</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" id="q2_d" name="question_2" value="D">
+                            <label for="q2_d">D) 8</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">Question 3 of 4</div>
+                    <div class="question-text">What is 3 × 4?</div>
+                    
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q3_a" name="question_3" value="A" required>
+                            <label for="q3_a">A) 7</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" id="q3_b" name="question_3" value="B">
+                            <label for="q3_b">B) 10</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" id="q3_c" name="question_3" value="C">
+                            <label for="q3_c">C) 12</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" id="q3_d" name="question_3" value="D">
+                            <label for="q3_d">D) 14</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">Question 4 of 4</div>
+                    <div class="question-text">What is 15 ÷ 3?</div>
+                    
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q4_a" name="question_4" value="A" required>
+                            <label for="q4_a">A) 3</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" id="q4_b" name="question_4" value="B">
+                            <label for="q4_b">B) 4</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" id="q4_c" name="question_4" value="C">
+                            <label for="q4_c">C) 5</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="radio" id="q4_d" name="question_4" value="D">
+                            <label for="q4_d">D) 6</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card text-center">
+                    <button type="button" onclick="window.location.href='demo-result.html'" class="btn btn-success" style="font-size: 1.2em; padding: 15px 40px;">
+                        Submit Quiz
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Learning Platform. Designed for young learners.</p>
+        </div>
+    </footer>
+</body>
+</html>
