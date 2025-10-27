@@ -65,114 +65,97 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     redirect('result.php?quiz_id=' . $quiz_id . '&score=' . $score . '&max=' . $max_score);
 }
+
+// Set page configuration
+$pageTitle = sanitize($quiz['title']) . ' - Learning Platform';
+require_once '../includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo sanitize($quiz['title']); ?> - Learning Platform</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="dashboard.php" class="logo">🎓 Learning Platform</a>
-                <nav class="nav">
-                    <a href="dashboard.php">Dashboard</a>
-                    <div class="user-info">
-                        <span>Welcome, <?php echo sanitize($_SESSION['full_name']); ?>!</span>
-                        <a href="logout.php">Logout</a>
-                    </div>
-                </nav>
+<div class="container">
+    <div class="mb-3">
+        <a href="dashboard.php" class="btn btn-outline-primary">
+            <i class="bi bi-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h1 class="text-primary mb-3"><?php echo sanitize($quiz['title']); ?></h1>
+            <p class="text-muted mb-3"><?php echo sanitize($quiz['description']); ?></p>
+            <div>
+                <span class="badge bg-info">
+                    <i class="bi bi-clock"></i> Time Limit: <?php echo $quiz['time_limit']; ?> minutes
+                </span>
+                <span class="badge bg-secondary ms-2">
+                    <i class="bi bi-question-circle"></i> Questions: <?php echo count($questions); ?>
+                </span>
             </div>
         </div>
-    </header>
+    </div>
 
-    <main class="main-content">
-        <div class="container">
-            <div style="margin-bottom: 20px;">
-                <a href="dashboard.php" style="color: #667eea; text-decoration: none;">← Back to Dashboard</a>
-            </div>
-
-            <div class="card">
-                <h1 style="color: #667eea; margin-bottom: 10px;"><?php echo sanitize($quiz['title']); ?></h1>
-                <p style="color: #666; margin-bottom: 15px;"><?php echo sanitize($quiz['description']); ?></p>
-                <div style="color: #888;">
-                    <span>⏱️ Time Limit: <?php echo $quiz['time_limit']; ?> minutes</span>
-                    <span style="margin-left: 20px;">📝 Questions: <?php echo count($questions); ?></span>
+    <form method="POST" action="quiz.php?id=<?php echo $quiz_id; ?>">
+        <?php foreach ($questions as $index => $question): ?>
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <div class="badge bg-primary mb-3">
+                        Question <?php echo $index + 1; ?> of <?php echo count($questions); ?>
+                    </div>
+                    <h5 class="card-title mb-4"><?php echo sanitize($question['question_text']); ?></h5>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" 
+                               id="q<?php echo $question['id']; ?>_a" 
+                               name="question_<?php echo $question['id']; ?>" 
+                               value="A" 
+                               required>
+                        <label class="form-check-label" for="q<?php echo $question['id']; ?>_a">
+                            <strong>A)</strong> <?php echo sanitize($question['option_a']); ?>
+                        </label>
+                    </div>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" 
+                               id="q<?php echo $question['id']; ?>_b" 
+                               name="question_<?php echo $question['id']; ?>" 
+                               value="B">
+                        <label class="form-check-label" for="q<?php echo $question['id']; ?>_b">
+                            <strong>B)</strong> <?php echo sanitize($question['option_b']); ?>
+                        </label>
+                    </div>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" 
+                               id="q<?php echo $question['id']; ?>_c" 
+                               name="question_<?php echo $question['id']; ?>" 
+                               value="C">
+                        <label class="form-check-label" for="q<?php echo $question['id']; ?>_c">
+                            <strong>C)</strong> <?php echo sanitize($question['option_c']); ?>
+                        </label>
+                    </div>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" 
+                               id="q<?php echo $question['id']; ?>_d" 
+                               name="question_<?php echo $question['id']; ?>" 
+                               value="D">
+                        <label class="form-check-label" for="q<?php echo $question['id']; ?>_d">
+                            <strong>D)</strong> <?php echo sanitize($question['option_d']); ?>
+                        </label>
+                    </div>
                 </div>
             </div>
+        <?php endforeach; ?>
 
-            <form method="POST" action="quiz.php?id=<?php echo $quiz_id; ?>">
-                <?php foreach ($questions as $index => $question): ?>
-                    <div class="question-card">
-                        <div class="question-number">Question <?php echo $index + 1; ?> of <?php echo count($questions); ?></div>
-                        <div class="question-text"><?php echo sanitize($question['question_text']); ?></div>
-                        
-                        <div class="options">
-                            <div class="option">
-                                <input type="radio" 
-                                       id="q<?php echo $question['id']; ?>_a" 
-                                       name="question_<?php echo $question['id']; ?>" 
-                                       value="A" 
-                                       required>
-                                <label for="q<?php echo $question['id']; ?>_a">
-                                    A) <?php echo sanitize($question['option_a']); ?>
-                                </label>
-                            </div>
-                            
-                            <div class="option">
-                                <input type="radio" 
-                                       id="q<?php echo $question['id']; ?>_b" 
-                                       name="question_<?php echo $question['id']; ?>" 
-                                       value="B">
-                                <label for="q<?php echo $question['id']; ?>_b">
-                                    B) <?php echo sanitize($question['option_b']); ?>
-                                </label>
-                            </div>
-                            
-                            <div class="option">
-                                <input type="radio" 
-                                       id="q<?php echo $question['id']; ?>_c" 
-                                       name="question_<?php echo $question['id']; ?>" 
-                                       value="C">
-                                <label for="q<?php echo $question['id']; ?>_c">
-                                    C) <?php echo sanitize($question['option_c']); ?>
-                                </label>
-                            </div>
-                            
-                            <div class="option">
-                                <input type="radio" 
-                                       id="q<?php echo $question['id']; ?>_d" 
-                                       name="question_<?php echo $question['id']; ?>" 
-                                       value="D">
-                                <label for="q<?php echo $question['id']; ?>_d">
-                                    D) <?php echo sanitize($question['option_d']); ?>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-
-                <div class="card text-center">
-                    <button type="submit" class="btn btn-success" style="font-size: 1.2em; padding: 15px 40px;">
-                        Submit Quiz
-                    </button>
-                </div>
-            </form>
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <button type="submit" class="btn btn-success btn-lg px-5">
+                    <i class="bi bi-check-circle"></i> Submit Quiz
+                </button>
+            </div>
         </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Learning Platform. Designed for young learners.</p>
-        </div>
-    </footer>
-</body>
-</html>
-<?php
+    </form>
+</div>
+<?php 
+require_once '../includes/footer.php';
 $stmt->close();
 $questions_stmt->close();
 $conn->close();
