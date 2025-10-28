@@ -48,70 +48,48 @@ if ($percentage >= 90) {
     $grade_message = "Keep practicing! You can do better!";
     $grade_emoji = "💪";
 }
+
+// Set page configuration
+$pageTitle = 'Quiz Results - Learning Platform';
+require_once '../includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Results - Learning Platform</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="dashboard.php" class="logo">🎓 Learning Platform</a>
-                <nav class="nav">
-                    <a href="dashboard.php">Dashboard</a>
-                    <div class="user-info">
-                        <span>Welcome, <?php echo sanitize($_SESSION['full_name']); ?>!</span>
-                        <a href="logout.php">Logout</a>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0 text-center">
+                <div class="card-body p-5">
+                    <div style="font-size: 5rem; margin-bottom: 20px;"><?php echo $grade_emoji; ?></div>
+                    <h1 class="text-primary mb-3">Quiz Completed!</h1>
+                    <h3 class="mb-4"><?php echo sanitize($quiz['title']); ?></h3>
+                    
+                    <div class="mb-4">
+                        <div class="display-1 fw-bold text-primary mb-2">
+                            <?php echo $score; ?> <span class="text-muted">/ <?php echo $max_score; ?></span>
+                        </div>
+                        <div class="display-4 fw-bold text-<?php echo $percentage >= 75 ? 'success' : ($percentage >= 60 ? 'warning' : 'danger'); ?>">
+                            <?php echo $percentage; ?>%
+                        </div>
                     </div>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <main class="main-content">
-        <div class="container">
-            <div class="result-summary">
-                <div style="font-size: 4em; margin-bottom: 20px;"><?php echo $grade_emoji; ?></div>
-                <h1 style="color: #667eea; margin-bottom: 20px;">Quiz Completed!</h1>
-                <h2 style="margin-bottom: 30px;"><?php echo sanitize($quiz['title']); ?></h2>
-                
-                <div class="score-display">
-                    <?php echo $score; ?> / <?php echo $max_score; ?>
-                </div>
-                
-                <div class="percentage">
-                    <?php echo $percentage; ?>%
-                </div>
-                
-                <div style="font-size: 1.3em; color: #666; margin-bottom: 40px;">
-                    <?php echo $grade_message; ?>
-                </div>
-                
-                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                    <a href="quiz.php?id=<?php echo $quiz_id; ?>" class="btn btn-secondary">
-                        Retake Quiz
-                    </a>
-                    <a href="dashboard.php" class="btn btn-primary">
-                        Back to Dashboard
-                    </a>
+                    
+                    <div class="alert alert-<?php echo $percentage >= 75 ? 'success' : ($percentage >= 60 ? 'warning' : 'info'); ?> mb-4">
+                        <h5><?php echo $grade_message; ?></h5>
+                    </div>
+                    
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="quiz.php?id=<?php echo $quiz_id; ?>" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-arrow-repeat"></i> Retake Quiz
+                        </a>
+                        <a href="dashboard.php" class="btn btn-primary btn-lg">
+                            <i class="bi bi-house-door"></i> Back to Dashboard
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Learning Platform. Designed for young learners.</p>
-        </div>
-    </footer>
-</body>
-</html>
-<?php
+    </div>
+</div>
+<?php 
+require_once '../includes/footer.php';
 $stmt->close();
 $conn->close();
 ?>
