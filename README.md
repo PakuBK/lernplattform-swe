@@ -1,66 +1,171 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Lernplattform SWE - Learning Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel 11 learning platform with role-based access control, quiz functionality, and educational content management.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Authentication**: Laravel Breeze with email/password authentication
+- **Roles**: Student, Teacher, Parent, Admin
+- **Subjects**: Create and manage subjects with assigned teachers
+- **Themes**: Organize content into themes within subjects
+- **Materials**: Upload and manage PDF learning materials
+- **Quizzes**: Create quizzes with multiple-choice questions
+- **Quiz Player**: Interactive quiz taking with automatic scoring
+- **Random Quiz**: Take random quizzes per subject
+- **Dashboards**: Role-specific dashboards for each user type
+- **Progress Tracking**: View quiz attempts and scores
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Technology Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Laravel 11
+- PHP 8.3
+- Bootstrap 5
+- MySQL
+- Blade Templates
+- Vite
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd lernplattform-swe
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. Install PHP dependencies:
+```bash
+composer install
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. Install NPM dependencies:
+```bash
+npm install
+```
 
-## Laravel Sponsors
+4. Copy the environment file:
+```bash
+cp .env.example .env
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+5. Generate application key:
+```bash
+php artisan key:generate
+```
 
-### Premium Partners
+6. Configure your database in `.env`:
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=lernplattform
+DB_USERNAME=root
+DB_PASSWORD=your_password
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+7. Create the database:
+```bash
+mysql -u root -p -e "CREATE DATABASE lernplattform"
+```
 
-## Contributing
+8. Run migrations:
+```bash
+php artisan migrate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+9. Seed the database with demo data:
+```bash
+php artisan db:seed
+```
 
-## Code of Conduct
+10. Build frontend assets:
+```bash
+npm run build
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+11. Start the development server:
+```bash
+php artisan serve
+```
 
-## Security Vulnerabilities
+12. Visit `http://localhost:8000` in your browser.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Demo Users
+
+After seeding, you can log in with these demo accounts:
+
+### Admin
+- **Email**: admin@example.com
+- **Password**: password
+
+### Teacher
+- **Email**: teacher@example.com
+- **Password**: password
+
+### Student
+- **Email**: student@example.com
+- **Password**: password
+
+### Parent
+- **Email**: parent@example.com
+- **Password**: password
+
+## Database Entities
+
+- **users**: User accounts with roles
+- **students**: Student profiles linked to users
+- **parents**: Parent profiles linked to users
+- **parent_child**: Relationship between parents and students
+- **subjects**: Academic subjects
+- **themes**: Topics within subjects
+- **materials**: PDF learning materials
+- **quizzes**: Quiz definitions
+- **questions**: Quiz questions
+- **question_options**: Multiple choice options
+- **attempts**: Quiz attempt records
+- **attempt_answers**: Student answers for each question
+
+## Key Features by Role
+
+### Student
+- View available subjects and materials
+- Take quizzes
+- View quiz history and scores
+- Take random quizzes per subject
+
+### Teacher
+- Create and manage subjects
+- Create themes and upload materials
+- Create and manage quizzes
+- View all subjects they teach
+
+### Parent
+- View children's progress
+- Monitor quiz attempts and scores
+
+### Admin
+- Full system access
+- Manage all subjects, themes, materials, and quizzes
+- View system statistics
+
+## Development
+
+To run in development mode with hot reloading:
+```bash
+npm run dev
+```
+
+In another terminal:
+```bash
+php artisan serve
+```
+
+## Testing
+
+Run tests:
+```bash
+php artisan test
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the MIT license.

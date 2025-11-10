@@ -2,63 +2,73 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Quiz;
+use App\Models\Subject;
+use App\Models\Theme;
+use App\Models\Question;
+use App\Models\QuestionOption;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $quizzes = Quiz::with(['subject', 'theme'])->get();
+        return view('quizzes.index', compact('quizzes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $subjects = Subject::all();
+        $themes = Theme::all();
+        return view('quizzes.create', compact('subjects', 'themes'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'subject_id' => 'required|exists:subjects,id',
+            'theme_id' => 'nullable|exists:themes,id',
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'time_limit' => 'nullable|integer|min:1',
+        ]);
+
+        Quiz::create($validated);
+        return redirect()->route('quizzes.index')->with('success', 'Quiz created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Quiz $quiz)
     {
-        //
+        $quiz->load(['subject', 'theme', 'questions.options']);
+        return view('quizzes.show', compact('quiz'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Quiz $quiz)
     {
-        //
+        $subjects = Subject::all();
+        $themes = Theme::all();
+        $quiz->load('questions.options');
+        return view('quizzes.edit', compact('quiz', 'subjects', 'themes'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Quiz $quiz)
     {
-        //
+        $validated = $request->validate([
+            'subject_id' => 'required|exists:subjects,id',
+            'theme_id' => 'nullable|exists:themes,id',
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'time_limit' => 'nullable|integer|min:1',
+        ]);
+
+        $quiz->update($validated);
+        return redirect()->route('quizzes.index')->with('success', 'Quiz updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Quiz $quiz)
     {
-        //
+        $quiz->delete();
+        return redirect()->route('quizzes.index')->with('success', 'Quiz deleted successfully.');
     }
 }

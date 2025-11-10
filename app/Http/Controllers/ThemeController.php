@@ -2,63 +2,65 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Theme;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 
 class ThemeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $themes = Theme::with('subject')->get();
+        return view('themes.index', compact('themes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $subjects = Subject::all();
+        return view('themes.create', compact('subjects'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'subject_id' => 'required|exists:subjects,id',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'order' => 'nullable|integer',
+        ]);
+
+        Theme::create($validated);
+        return redirect()->route('themes.index')->with('success', 'Theme created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Theme $theme)
     {
-        //
+        $theme->load(['subject', 'materials', 'quizzes']);
+        return view('themes.show', compact('theme'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Theme $theme)
     {
-        //
+        $subjects = Subject::all();
+        return view('themes.edit', compact('theme', 'subjects'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Theme $theme)
     {
-        //
+        $validated = $request->validate([
+            'subject_id' => 'required|exists:subjects,id',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'order' => 'nullable|integer',
+        ]);
+
+        $theme->update($validated);
+        return redirect()->route('themes.index')->with('success', 'Theme updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Theme $theme)
     {
-        //
+        $theme->delete();
+        return redirect()->route('themes.index')->with('success', 'Theme deleted successfully.');
     }
 }
